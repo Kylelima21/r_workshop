@@ -1,11 +1,10 @@
 #Introduction to R workshop
 #Part 3 - data summary and viz
-#Schoodic Institute at Acadia National Park, 2022
 
 #Save as "3_data_viz" in the scripts folder
 
 #----------------------------------------------#
-####     Packages and working directory     ####
+####                Packages                ####
 #----------------------------------------------#
 
 #Again call the tidyverse package
@@ -13,11 +12,6 @@ library(tidyverse)
 #This time we need ggplot2 which is the package for the plotting we will do
 library(ggplot2)
 
-
-#Check working directory
-getwd()
-#Set the working directory if needed
-setwd("Desktop/R_workshop")
 
 
 
