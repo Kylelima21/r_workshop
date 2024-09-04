@@ -1,21 +1,14 @@
 #Introduction to R workshop
 #Part 2 - data manipulation
-#Schoodic Institute at Acadia National Park, 2022
 
 #Save as "2_data_manipulation" in the scripts folder
 
 #----------------------------------------------#
-####     Packages and working directory     ####
+####               Packages                 ####
 #----------------------------------------------#
 
 #Again call the tidyverse package
 library(tidyverse)
-
-
-#Check working directory
-getwd()
-#Set the working directory if needed
-setwd("Desktop/R_workshop")
 
 
 
@@ -40,6 +33,15 @@ iris.clean <- read.csv("data/iris_data.csv") %>%
   rename(sepal.length=Sepal.Length, sepal.width=Sepal.Width) %>% #a way to rename columns
   rename_with(tolower) %>% #a different way to adjust column names
   mutate(species = tolower(species)) #fix those capital species names
+
+
+#Make sure these things are fixed
+iris.clean %>% 
+  names()
+
+iris.clean %>% 
+  select(species) %>% 
+  distinct()
 
 
 
@@ -75,12 +77,7 @@ iris.clean %>%
 #There are right_joins that would do the opposite and full joins that would
 #keep all the data no matter if there were matches or not
 
-#This could also be written in base R as
-left_join(iris.clean, genus, by = "species")
-
-#But this doesn't flow for our pipeline
-
-#Great, this now added the genus column onto our data correctly
+#So, this now added the genus column onto our data correctly
 #But, we also want a scientific name column combining the two!
 iris.clean %>% 
   left_join(genus, by = "species") %>% #combine the two data frames
@@ -94,7 +91,6 @@ iris.data.final <- iris.clean %>%
 #Write out the cleaned data
 write.csv(iris.data.final, "data/iris_data_clean.csv", row.names = FALSE)
   
-
 
 
 ##Also, here is another important function that you will want to use

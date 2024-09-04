@@ -3,43 +3,26 @@
 
 #Introduction to R workshop
 #Part 1 - reading in and exploring data
-#Schoodic Institute at Acadia National Park, 2022
 
-#You should have R 4.1.2 and RStudio 2022.02.1.
+
+#These things with the hashtags are comments
+#Things without hashtags are code
+4*60+(1300/18.42)^2/100
 
 
 #Let's save this script as our reading and exploring data script
+#Make a folder for scripts, then let's save it there
 #File > Save As... > name as "1_read_explore_data" >
 #navigate to the scripts folder in our workshop directory > save
 
+
 #When your script is not saved, the name above in the top left corner of this window
-#changes color
-
-#These things with the hash tags are comments
-#Things without hash tags are code
+#is red. After you save it, the name returns to black.
 
 
-#R is amazing. Look we can do simple math.
-1+1
-40/2
+#I always start a script by creating a header for the section I will be writing.
 
-#And complex math
-((4000201*14^3)/778291)^2
-log(53)
-
-
-#Plus it provides us with an amazing tool to
-#clean, fix, alter, and analyze data, and make tables/figures from that data
-
-
-
-#Let's see how we might start doing that
-
-
-
-#Now I always start a script by creating a header for the section I will be writing.
-
-#The four # after "Packages" is what we can use to separate the sections of our script
+#The four # after "Packages" below is what we can use to separate the sections of our script
 #creating a dropdown selectable menu to navigate
 
 #This is super useful in longer scripts
@@ -59,9 +42,15 @@ log(53)
 #Now, a package is simply a published group of functions that someone wrote 
 #and now we get to use these to make our lives easier.
 
-#When you load R, there are a set group of packages that are automatically included
-#This is what we call base R.
-#Additional packages that we are adding here are not base R packages, they are addons.
+#When you load R, there are a set group of packages that are automatically included.
+#You'll often need other packages than just these defaults.
+
+#You can download packages in the packages tab.
+
+#Lets see some information about the install.packages function we will use
+?install.packages
+#You'll see the description pop up in the lower right window and note it's from
+#the package utils
 
 #This line of code uses the function install.packages() to perform the action of 
 #installing the package called tidyverse.
@@ -88,30 +77,12 @@ library(tidyverse)
 ####         Reading in the data            ####
 #----------------------------------------------#
 
-#Right now we are working with access to all files on your computer.
-
-#This can be messy and a real hassle so to fix that we can set what's called a 
-#working directory so that we are only working in the folder that we want.
-
-#First run getwd() to see where you really are working within R
-getwd()
-#[1] "/Users/Kylelima" this is what I get in the console as my current directory
-
-#If your working directory is in the wrong spot, you need to first unlink before changing
-unlink("/Users/Kylelima/Desktop/ECO Research/Schoodic_Analyst/schoodic_spatial/scripts", recursive = T)
-
-#Now, let's use the setwd() function to get to our R_workshop folder
-setwd("Desktop/R_workshop")
-
-#Let's make sure this worked
-getwd()
-#[1] "/Users/Kylelima/Desktop/R_workshop" GREAT!
-
 #Now we can read in the iris data for our workshop, using the read.csv() function since
 #the file is a ".csv"
+?read.csv
 read.csv("data/iris_data.csv")
 
-#If you are ever unsure of a function or the arguments you can search it using the
+#If you are ever unsure of a function or the arguments remember you can search it using the
 #"Help" tab of the bottom right window of RStudio, or type the function in the console
 #like this "?read.csv" and running that will bring you to the help page.
 
@@ -180,14 +151,17 @@ iris.data %>%
              #the unique values in that column
 
 
+#Quick look at the dataset - needs to be a tibble (tidyverse dataframe)
+as_tibble(iris.data)
+
 
 
 #----------------------------------------------#
 ####                  Quiz                  ####
 #----------------------------------------------#
 
-#You'll notice that none of these lines of code we ran added anything to the global
-#environment, why?
+#You'll notice that none of the lines of code we ran in the "Explore the data" 
+#section added anything to the global environment, why?
 
 #What is a function? package?
 
